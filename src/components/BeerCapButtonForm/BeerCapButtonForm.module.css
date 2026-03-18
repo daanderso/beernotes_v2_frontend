@@ -1,0 +1,38 @@
+
+.beer-cap-button {
+  border: none ;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out !important; /* Smooth transition for effects */
+}
+
+.beer-cap-button:hover {
+  transform: scale(1.05) !important; /* Slightly enlarge the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Add a shadow effect */
+  background-color: rgba(0, 0, 0, 0.1) !important; /* Optional: Add a subtle background color */
+}
+
+.beer-cap-button:active {
+  transform: scale(0.95) !important; /* Slightly shrink the button */
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2) !important; /* Add an inset shadow */
+  background-color: rgba(0, 0, 0, 0.2) !important; /* Optional: Darken the background */
+}
+
+
+/* ovverride default bootstrap button styles */
+
+/* .btn-primary {
+  background-color: transparent  !important; 
+  border-color: transparent  !important; 
+  color: inherit; 
+} 
+*/
+
+/* .custom-btn-primary:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important; 
+  border-color: rgba(0, 0, 0, 0.1) !important; 
+} */
+

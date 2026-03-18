@@ -1,0 +1,55 @@
+import { useState,useEffect } from "react";
+import styles from './App.module.css';
+import BeerCapButtonForm from './components/BeerCapButtonForm/BeerCapButtonForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BeerNoteTable from './components/BeerNoteTable/BeerNoteTable';
+import { Beer } from './models/Beer';
+import axios from "axios";
+
+
+function App() {
+  const [beerNotes, setBeerNotes] = useState<Beer[]>([]); // Shared state for beer notes
+
+
+
+  // Fetch beer notes from the backend when the app renders
+  useEffect(() => {
+    async function fetchBeerNotes() {
+      try {
+        const response = await axios.get("http://localhost:8080/api/beernotes/beerlist");
+        setBeerNotes(response.data); // Update the state with the fetched beer notes
+      } catch (error) {
+        console.error("Error fetching beer notes:", error);
+      }
+    }
+
+    fetchBeerNotes();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+
+
+  // Function to add a new beer note to the list.  The addBeerNote function is passed to the BeerCapButtonForm component
+  // and is called when the form is submitted.
+  // It (is a shared state) that updates the beerNotes state with the new beer note.
+  const addBeerNote = (newBeerNote: Beer) => {
+    setBeerNotes((prevNotes) => [...prevNotes, newBeerNote]);
+  };
+
+  return (
+    <div className={styles["beernotes-background"]}>  
+      <header className="header">
+        <h1 style={{ textAlign: "center" }}>Welcome to BeerNotes</h1>       
+      </header>   
+      <div className="app-container">
+        <br></br>
+        {/* Pass the addBeerNote function as a prop */}
+        <BeerCapButtonForm addBeerNote={addBeerNote} />
+        <br></br>
+      </div> 
+      {/* Pass the beerNotes state as a prop */}
+      <div><BeerNoteTable beerNotes={beerNotes} /></div>
+    </div>
+  );
+}
+
+export default App;
