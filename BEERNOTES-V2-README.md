@@ -89,3 +89,14 @@ To dynamically refresh the table when a new beer is added, you can use a combina
 2. Pass a Callback: Pass a callback function from the parent component to BeerCapButtonForm that updates the beerNotes state when a new beer is added.
 
 3. Update State Dynamically: When a new beer is successfully added via the form, update the beerNotes state in the parent component. This will automatically re-render the BeerNoteTable component with the new data.
+
+# Maintenance
+1. Updating vite
+     - npm outdated
+     - npm update 
+     - npm update vite  ( updates the Vite package in your project)
+     - npm install vite@latest @vitejs/plugin-react@latest --save-dev  (migrate to new version)
+     - npm update eslint eslint-plugin-react-hooks eslint-plugin-react-refresh typescript
+
+2. Updating vitest
+     - $ npm install vitest@latest -D
