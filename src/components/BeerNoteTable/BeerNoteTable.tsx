@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Button } from "react-bootstrap";
 import { Beer } from "../../models/Beer";
 import styles from "./BeerNoteTable.module.css";
+import TableButton from "../TableButton/TableButton";
 
 interface BeerNoteTableProps {
   beerNotes: Beer[]; // Array of beer notes passed as a prop
@@ -12,6 +13,16 @@ function BeerNoteTable({ beerNotes }: BeerNoteTableProps): React.ReactElement {
   // Each row contains the beer's name, style, brewery, origin, and note
   // The index is used to generate a unique key for each row
   // The table is styled with Bootstrap classes for a clean and responsive design
+
+//Create handler function for delete button
+function handleDelete() {
+  // Code to handle delete action
+  console.log('Delete button clicked!');
+}
+
+
+
+
   return (
     <div className={styles.table}>
       <Table className="w-auto" striped bordered hover variant="light">
@@ -42,9 +53,7 @@ function BeerNoteTable({ beerNotes }: BeerNoteTableProps): React.ReactElement {
                 </Button>
               </td>
               <td>
-                <Button variant="primary" type="button">
-                  Delete
-                </Button>
+               <TableButton onClick={handleDelete}>Delete</TableButton>
               </td>
             </tr>
           ))}
