@@ -6,22 +6,15 @@ import TableButton from "../TableButton/TableButton";
 
 interface BeerNoteTableProps {
   beerNotes: Beer[]; // Array of beer notes passed as a prop
+  onDelete: (beerName: string) => void; // function passed as a prop to handle deletion of a beer note
 }
-function BeerNoteTable({ beerNotes }: BeerNoteTableProps): React.ReactElement {
+
+function BeerNoteTable({ beerNotes, onDelete }: BeerNoteTableProps): React.ReactElement {
   // Function to render the beer notes in a table format
   // The beerNotes prop is an array of Beer objects, which are displayed in the table rows
   // Each row contains the beer's name, style, brewery, origin, and note
   // The index is used to generate a unique key for each row
   // The table is styled with Bootstrap classes for a clean and responsive design
-
-//Create handler function for delete button
-function handleDelete() {
-  // Code to handle delete action
-  console.log('Delete button clicked!');
-}
-
-
-
 
   return (
     <div className={styles.table}>
@@ -53,7 +46,7 @@ function handleDelete() {
                 </Button>
               </td>
               <td>
-               <TableButton onClick={handleDelete}>Delete</TableButton>
+               <TableButton onClick={() => onDelete(Beer.name)}>Delete</TableButton>
               </td>
             </tr>
           ))}

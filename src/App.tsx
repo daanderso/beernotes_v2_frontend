@@ -35,6 +35,15 @@ function App() {
     setBeerNotes((prevNotes) => [...prevNotes, newBeerNote]);
   };
 
+  const handleDeleteBeer = async (beerName: string) => {
+  try {
+    await axios.delete(`http://localhost:8080/api/beernotes/deleteBeer/${beerName}`);
+    setBeerNotes((prevNotes) => prevNotes.filter((beer) => beer.name !== beerName));
+  } catch (error) {
+    console.error("Error deleting beer:", error);
+  }
+};
+
   return (
     <div className={styles["beernotes-background"]}>  
       <header className="header">
@@ -46,8 +55,8 @@ function App() {
         <BeerCapButtonForm addBeerNote={addBeerNote} />
         <br></br>
       </div> 
-      {/* Pass the beerNotes state as a prop */}
-      <div><BeerNoteTable beerNotes={beerNotes} /></div>
+      {/* Pass the beerNotes state and handleDeleteBeer function as props */}
+      <div><BeerNoteTable beerNotes={beerNotes} onDelete={handleDeleteBeer} /></div>
     </div>
   );
 }
