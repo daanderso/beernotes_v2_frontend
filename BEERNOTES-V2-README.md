@@ -36,6 +36,7 @@ LIST of Available backend APIs
 3. DELETE http://localhost:8080/api/beernotes/deleteBeer/{beerName}- Deletes a beer note by beer name.
 4. PUT http://localhost:8080/api/beernotes/updateBeerNote/{beerName} - Updates a beer note by beer name.
 5. DELETE http://localhost:8080/api/beernotes/deleteBeerById/{id}- Deletes a beer note by id. Note: Id is that present in backend Db
+6. PUT http://localhost:8080/api/beernotes/updateFullBeer - Updates the beer object in the Db
 
 
 # Key points
