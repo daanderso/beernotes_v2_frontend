@@ -7,3 +7,20 @@
   background: url('images/beer.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
+.header-title {
+  font-size: 4.375rem;
+  font-weight: 700;
+  font-family: 'Segoe UI', 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+  font-size: 1.375rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 8px 0 0 0;
+  letter-spacing: 0.3px;
+  opacity: 0.95;
+}

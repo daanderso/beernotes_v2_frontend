@@ -37,8 +37,9 @@ function App() {
       await axios.delete(
         `http://localhost:8080/api/beernotes/deleteBeer/${beerName}`,
       );
+      //filters previous state keeping only beers that do not match the deleted beer name
       setBeerNotes((prevNotes) =>
-        prevNotes.filter((beer) => beer.name !== beerName),
+        prevNotes.filter((beer) => beer.name !== beerName), 
       );
     } catch (error) {
       console.error("Error deleting beer:", error);
@@ -56,7 +57,12 @@ function App() {
   return (
     <div className={styles["beernotes-background"]}>
       <header className="header">
-        <h1 style={{ textAlign: "center" }}>Welcome to BeerNotes</h1>
+        <div style={{ textAlign: "center", padding: "20px 0" }}>
+          <h1 className={styles["header-title"]}>BeerNotes</h1>
+          <p className={styles["header-subtitle"]}>
+            A Personal Journey of Global Beer Tastings
+          </p>
+        </div>
       </header>
       <div className="app-container">
         <br></br>
@@ -64,7 +70,7 @@ function App() {
         <BeerCapButtonForm addBeerNote={addBeerNote} />
         <br></br>
       </div>
-      {/* Pass the beerNotes state and handleDeleteBeer function as props */}
+      {/* Pass the beerNotes state, onDelete function, and onUpdate function as props */}
       <div>
         <BeerNoteTable
           beerNotes={beerNotes}
