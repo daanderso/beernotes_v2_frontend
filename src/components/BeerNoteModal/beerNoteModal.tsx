@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { Beer } from "../../models/Beer";
+import StarRating from "../StarRating/StarRating";
 import axios from "axios";
 
 interface BeerNoteModalProps {
@@ -22,6 +23,7 @@ function BeerNoteModal({
     brewery: "",
     origin: "",
     note: "",
+    rating: null,
   });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -46,6 +48,13 @@ function BeerNoteModal({
 
   const isValidFormData = (data: Beer) => {
     return data.name && data.style && data.brewery && data.origin && data.note;
+  };
+
+  const handleRatingChange = (rating: number | null) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rating,
+    }));
   };
 
   const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -175,6 +184,14 @@ function BeerNoteModal({
               onChange={handleInputChange}
               placeholder="Enter your note about this beer"
               rows={4}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Rating (optional)</Form.Label>
+            <StarRating
+              value={formData.rating}
+              onChange={handleRatingChange}
             />
           </Form.Group>
 

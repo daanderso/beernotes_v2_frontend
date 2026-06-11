@@ -1,0 +1,21 @@
+---
+description: Testing coverage expectations, framework tools (Vitest/RTL), and execution guardrails.
+globs: "**/*.{test,spec}.{ts,tsx}"
+alwaysApply: false
+---
+
+# Testing Rules
+
+## Framework Stack
+- Use **Vitest** and **React Testing Library**.
+
+## Code Coverage Requirements
+- Automatically generate tests for:
+  - New reusable components
+  - Business logic
+  - Utility functions
+  - API service layers
+- Testing may be skipped *only* when changes are purely cosmetic (styles only, no behavioral changes).
+
+## Strategy
+- Avoid testing implementation details unnecessarily; focus on user behavior and contract correctness.

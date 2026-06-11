@@ -22,7 +22,7 @@ function App() {
       }
     }
 
-    fetchBeerNotes();
+    fetchBeerNotes(); //this triggers the API call to fetch beer notes when the component mounts
   }, []); // Empty dependency array ensures this runs only once on mount
 
   // Function to add a new beer note to the list.  The addBeerNote function is passed to the BeerCapButtonForm component
@@ -37,7 +37,7 @@ function App() {
       await axios.delete(
         `http://localhost:8080/api/beernotes/deleteBeer/${beerName}`,
       );
-      //filters previous state keeping only beers that do not match the deleted beer name
+      //filters previous state keeping only beers that do not match the deleted beer name and updates the state with the filtered list, effectively removing the deleted beer note from the UI.
       setBeerNotes((prevNotes) =>
         prevNotes.filter((beer) => beer.name !== beerName), 
       );

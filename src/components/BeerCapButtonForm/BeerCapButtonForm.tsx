@@ -3,6 +3,7 @@ import { Button, Collapse, Image, Container, Form } from "react-bootstrap";
 import styles from "./BeerCapButtonForm.module.css"; // Import CSS module for styling
 import bottlecap from "../../assets/images/bottlecap-gold.png";
 import { Beer } from "../../models/Beer";
+import StarRating from "../StarRating/StarRating";
 import axios from "axios";
 
 interface BeerCapButtonFormProps {
@@ -18,6 +19,7 @@ function BeerCapButtonForm({
     brewery: "",
     origin: "",
     note: "",
+    rating: null,
   };
 
   // Usestate hooks to manage the state of the form and its data
@@ -58,8 +60,8 @@ function BeerCapButtonForm({
       .then((response) => {
         console.log("Beer note saved successfully", response.data);
 
-        // Add the new beer note to the shared state
-        addBeerNote(beerFormData);
+        // Add the new beer note to the shared state (use server response for id and rating)
+        addBeerNote(response.data);
 
         // Reset the form data to the initial state
         setBeerFormData(initializeFormData);
@@ -228,6 +230,17 @@ function BeerCapButtonForm({
                       setBeerFormData({ ...beerFormData, note: e.target.value })
                     }
                   />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="beerRating">
+                  <Form.Label>Rating (optional)</Form.Label>
+                  <div>
+                    <StarRating
+                      value={beerFormData.rating}
+                      onChange={(rating) =>
+                        setBeerFormData({ ...beerFormData, rating })
+                      }
+                    />
+                  </div>
                 </Form.Group>
               </div>
 

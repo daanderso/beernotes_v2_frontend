@@ -1,0 +1,34 @@
+.starRating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.starFilled {
+  color: #f5a623;
+}
+
+.starReadOnly {
+  cursor: default;
+}
+
+.star:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.noRating {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
