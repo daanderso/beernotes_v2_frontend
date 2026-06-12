@@ -1,0 +1,15 @@
+---
+description: Strict TypeScript configuration and type safety rules.
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript & Type Safety Rules
+
+## Compiler Expectations
+- Assume `"strict": true` is enforced in the environment.
+
+## Typing Rules
+- **Required:** Strongly type props, API responses, exported functions, and reusable utilities.
+- **Allowed:** `any` is only allowed when absolutely unavoidable. You must document why it is required with a short comment.
+- **Contracts:** Use `interfaces` for extendable object contracts. Use `types` for unions and utility compositions.

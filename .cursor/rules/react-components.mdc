@@ -1,0 +1,17 @@
+---
+description: React component architecture, file structure, styling with Bootstrap/CSS Modules, and state management thresholds.
+globs: "src/components/**/*, src/pages/**/*, src/layouts/**/*"
+alwaysApply: false
+---
+
+# React Component & Styling Rules
+
+## Component Design & Architecture
+- Prefer functional components with PascalCase naming.
+- Ensure components are small, reusable, and use colocated CSS Modules.
+- **Preferred Structure:**
+  ```text
+  components/
+    UserCard/
+      UserCard.tsx
+      UserCard.module.css

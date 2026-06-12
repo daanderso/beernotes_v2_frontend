@@ -4,6 +4,7 @@ import { Beer } from "../../models/Beer";
 import styles from "./BeerNoteTable.module.css";
 import TableButton from "../TableButton/TableButton";
 import BeerNoteModal from "../BeerNoteModal/beerNoteModal";
+import StarRating from "../StarRating/StarRating";
 
 interface BeerNoteTableProps {
   beerNotes: Beer[]; // Array of beer notes passed as a prop
@@ -55,30 +56,34 @@ function BeerNoteTable({
             <th>Brewery</th>
             <th>Origin</th>
             <th>Note</th>
+            <th>Rating</th>
             <th> </th>
             <th> </th>
           </tr>
         </thead>
         <tbody>
-          {beerNotes.map((Beer, index) => (
-            <tr key={`${Beer.name}-${index}`}>
+          {beerNotes.map((beer, index) => (
+            <tr key={`${beer.name}-${index}`}>
               <td>{index + 1}</td>
-              <td>{Beer.name}</td>
-              <td>{Beer.style}</td>
-              <td>{Beer.brewery}</td>
-              <td>{Beer.origin}</td>
-              <td>{Beer.note}</td>
+              <td>{beer.name}</td>
+              <td>{beer.style}</td>
+              <td>{beer.brewery}</td>
+              <td>{beer.origin}</td>
+              <td>{beer.note}</td>
+              <td>
+                <StarRating value={beer.rating} readOnly />
+              </td>
               <td>
                 <Button
                   variant="primary"
                   type="button"
-                  onClick={() => handleUpdateClick(Beer)}
+                  onClick={() => handleUpdateClick(beer)}
                 >
                   Update
                 </Button>
               </td>
               <td>
-                <TableButton onClick={() => onDelete(Beer.name)}>
+                <TableButton onClick={() => onDelete(beer.name)}>
                   Delete
                 </TableButton>
               </td>

@@ -1,0 +1,23 @@
+---
+description: Async UI patterns, centralized Axios service layer, authentication handling, and API retry logic.
+globs: "src/api/**/*, src/services/**/*, src/hooks/**/*"
+alwaysApply: false
+---
+
+# API, Async, & Service Layer Rules
+
+## API Architecture
+- Use a centralized Axios instance and a service-layer architecture with typed request/response handling (e.g., `services/userService.ts`).
+- Avoid direct API calls scattered throughout UI components.
+
+## Authentication & Error Handling
+- Centralize token handling in Axios configuration. Use interceptors to isolate auth logic from UI components.
+- All async UI flows *must* include an explicit loading state, an error state, and user-friendly messaging. Avoid silent failures or uncaught errors.
+
+## Request Retries
+- Retry *only* idempotent requests and transient network failures.
+- Maximum retries: `2`. Use exponential backoff.
+
+## Forms
+- Use controlled React forms for simple forms.
+- Use `React Hook Form` for larger or more complex forms. Use the simplest reasonable solution first.
